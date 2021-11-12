@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class PlayerAnim : MonoBehaviour
 {
-
     public Animator anim;
-
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
         anim.SetFloat("Movement", Input.GetAxis("Vertical"));
+    }
+
+    public void Jump()
+    {
+        anim.SetTrigger("Jump");
     }
 }
