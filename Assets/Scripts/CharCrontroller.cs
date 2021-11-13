@@ -28,7 +28,7 @@ public class CharCrontroller : MonoBehaviour
             Anim.Jump();
         }*/
 
-        transform.Translate(new Vector3(hMovement, /*0*/ zMovement, vMovement/*runningSpeed*/) * Time.deltaTime);
+        transform.Translate(new Vector3(hMovement, /*0*/ zMovement, /*vMovement*/runningSpeed) * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
