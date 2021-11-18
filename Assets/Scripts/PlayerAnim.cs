@@ -8,10 +8,10 @@ public class PlayerAnim : MonoBehaviour
 
     void Update()
     {
-        anim.SetFloat("Movement", /*Input.GetAxis("Vertical")*/1.5f);
+        anim.SetFloat("Movement", /*Input.GetAxis("Vertical")*/ 1.5f);
     }
 
-    public void Jump()
+    public void JumpAmin()
     {
         anim.SetTrigger("Jump");
     }

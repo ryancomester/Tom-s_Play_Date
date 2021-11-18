@@ -5,27 +5,45 @@ using UnityEngine;
 
 public class RoadSpwanner : MonoBehaviour
 {
-    public List<GameObject> roads;
-    [SerializeField] private float offset = 126f;
-    [SerializeField] private float xPosition;
+    public GameObject[] roads;
+    public float zSpawn = 0f;
+    public float prefabLength = 30f;
+    public int numberOfPrefabs = 7;
+    public Transform playerTransform;
 
+    private List<GameObject> activePrefabs = new List<GameObject>();
 
     void Start()
     {
-        if(roads != null && roads.Count > 0)
+        for(int i = 0; i < numberOfPrefabs; i++)
         {
-            roads = roads.OrderBy(r => r.transform.position.z).ToList();
+            if (i == 0)
+                SpwanPrefab(0);
+            else
+                SpwanPrefab(Random.Range(0, roads.Length));
         }
     }
 
-    public void MoveRoad()
+    void Update()
     {
-        GameObject moveRoad = roads[0];
-        roads.Remove(moveRoad);
-        float newZ = roads[roads.Count - 1].transform.position.z + offset;
-        moveRoad.transform.position = new Vector3(0, 0, newZ);
-        roads.Add(moveRoad);
-        //Debug.Log("MoveRoad called");
+        if(playerTransform.position.z > zSpawn - (numberOfPrefabs * prefabLength))
+        {
+            SpwanPrefab(Random.Range(0, roads.Length));
+            Invoke("DeletePrefab", 2.5f);
+            //DeletePrefab();
+        }
+    }
 
+    public void SpwanPrefab(int roadIndex)
+    {
+        GameObject go = Instantiate(roads[roadIndex], transform.forward * zSpawn, transform.rotation);
+        activePrefabs.Add(go);
+        zSpawn += prefabLength;
+    }
+
+    private void DeletePrefab()
+    {
+        Destroy(activePrefabs[0]);
+        activePrefabs.RemoveAt(0);
     }
 }
