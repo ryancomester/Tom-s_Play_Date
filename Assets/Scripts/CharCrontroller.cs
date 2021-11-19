@@ -19,12 +19,7 @@ public class CharCrontroller : MonoBehaviour
     public float jumpForce;
     private float gravity = -20f;
 
-    private bool boom = false;
-
-    //for mobile swipe
-    Vector2 firstPressPos;
-    Vector2 secondPressPos;
-    Vector2 currentSwipe;
+    public static bool boom = false;
 
     void Start()
     {
