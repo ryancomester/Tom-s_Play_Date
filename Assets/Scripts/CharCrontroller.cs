@@ -19,6 +19,8 @@ public class CharCrontroller : MonoBehaviour
     public float jumpForce;
     private float gravity = -20f;
 
+    private bool boom = false;
+
     //for mobile swipe
     Vector2 firstPressPos;
     Vector2 secondPressPos;
@@ -101,22 +103,38 @@ public class CharCrontroller : MonoBehaviour
     private void FixedUpdate()
     {
         //checking weather the game has started
-        if (!PlayerManager.isGameStarted)
+        /*if (!PlayerManager.isGameStarted)
+        {
             return;
+        }
+        else
+        {
+            controller.Move(direction * Time.fixedDeltaTime);
+        }*/
 
-        controller.Move(direction * Time.fixedDeltaTime);
+        if (boom)
+        {
+            return;
+        }
+        else
+        {
+            controller.Move(direction * Time.fixedDeltaTime);
+        }
+
     }
 
     private void Jump()
     {
-        direction.y = jumpForce;
         Anim.JumpAmin();
+        direction.y = jumpForce;
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if(hit.transform.tag == "Obstacle")
         {
+            boom = true;
+            Anim.DieAnim();
             PlayerManager.gameOver = true;
         }
     }

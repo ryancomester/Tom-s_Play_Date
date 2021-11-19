@@ -20,8 +20,7 @@ public class PlayerManager : MonoBehaviour
     {
         if(gameOver)
         {
-            Time.timeScale = 0;
-            gameOverPanel.SetActive(true);
+            StartCoroutine(GameOverFunc());
         }
 
         if(SwipeManager.tap)
@@ -29,5 +28,13 @@ public class PlayerManager : MonoBehaviour
             isGameStarted = true;
             TapToStartText.SetActive(false);
         }
+    }
+
+    IEnumerator GameOverFunc()
+    {
+        yield return new WaitForSeconds(2f);
+        Time.timeScale = 0;
+        gameOverPanel.SetActive(true);
+        yield return null;
     }
 }

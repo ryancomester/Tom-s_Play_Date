@@ -23,4 +23,9 @@ public class PlayerAnim : MonoBehaviour
     {
         anim.SetTrigger("Jump");
     }
+
+    public void DieAnim()
+    {
+        anim.SetTrigger("Die");
+    }
 }
