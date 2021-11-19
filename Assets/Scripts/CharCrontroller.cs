@@ -32,13 +32,17 @@ public class CharCrontroller : MonoBehaviour
 
     void Update()
     {
+        //checking weather the game has started
+        if (!PlayerManager.isGameStarted)
+            return;
+
         direction.z = forwardSpeed;
 
         /*taking the input which lane should Tom be in.*/
         if (controller.isGrounded)
         {
             direction.y = -1;
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) || SwipeManager.swipeUp)
             {
                 Jump();
             }
@@ -53,7 +57,7 @@ public class CharCrontroller : MonoBehaviour
         /* when right arrow button is pressed ```desiredLane``` val adds one.
          * if the ```desiredLane```s value is 3 it is switched to 2.*/
 
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.RightArrow) || SwipeManager.swipeRight)
         {
             desiredLane++;
             if(desiredLane == 3)
@@ -61,7 +65,7 @@ public class CharCrontroller : MonoBehaviour
                 desiredLane = 2;
             }
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || SwipeManager.swipeLeft)
         {
             desiredLane--;
             if (desiredLane == -1)
@@ -69,10 +73,6 @@ public class CharCrontroller : MonoBehaviour
                 desiredLane = 0;
             }
         }
-
-        //mobile swipe control
-        
-        //mobile swipe control end
 
         /* calculating where the player should be after taking the input. */
         Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
@@ -100,6 +100,10 @@ public class CharCrontroller : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //checking weather the game has started
+        if (!PlayerManager.isGameStarted)
+            return;
+
         controller.Move(direction * Time.fixedDeltaTime);
     }
 

@@ -8,7 +8,15 @@ public class PlayerAnim : MonoBehaviour
 
     void Update()
     {
-        anim.SetFloat("Movement", /*Input.GetAxis("Vertical")*/ 1.5f);
+        //checks weather the game is started and if so the float value is set as 1.5f.
+        if (!PlayerManager.isGameStarted)
+        {
+            anim.SetFloat("Movement", 0f);
+        }
+        else
+        {
+            anim.SetFloat("Movement", 1.5f);
+        }
     }
 
     public void JumpAmin()
