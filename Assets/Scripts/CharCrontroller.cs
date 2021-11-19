@@ -19,6 +19,11 @@ public class CharCrontroller : MonoBehaviour
     public float jumpForce;
     private float gravity = -20f;
 
+    //for mobile swipe
+    Vector2 firstPressPos;
+    Vector2 secondPressPos;
+    Vector2 currentSwipe;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -37,6 +42,7 @@ public class CharCrontroller : MonoBehaviour
             {
                 Jump();
             }
+
         }
         else
         {
@@ -47,7 +53,7 @@ public class CharCrontroller : MonoBehaviour
         /* when right arrow button is pressed ```desiredLane``` val adds one.
          * if the ```desiredLane```s value is 3 it is switched to 2.*/
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             desiredLane++;
             if(desiredLane == 3)
@@ -55,7 +61,7 @@ public class CharCrontroller : MonoBehaviour
                 desiredLane = 2;
             }
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             desiredLane--;
             if (desiredLane == -1)
@@ -63,6 +69,10 @@ public class CharCrontroller : MonoBehaviour
                 desiredLane = 0;
             }
         }
+
+        //mobile swipe control
+        
+        //mobile swipe control end
 
         /* calculating where the player should be after taking the input. */
         Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
@@ -97,6 +107,14 @@ public class CharCrontroller : MonoBehaviour
     {
         direction.y = jumpForce;
         Anim.JumpAmin();
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if(hit.transform.tag == "Obstacle")
+        {
+            PlayerManager.gameOver = true;
+        }
     }
 
 }

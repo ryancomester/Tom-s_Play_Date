@@ -29,7 +29,7 @@ public class RoadSpwanner : MonoBehaviour
         if(playerTransform.position.z > zSpawn - (numberOfPrefabs * prefabLength))
         {
             SpwanPrefab(Random.Range(0, roads.Length));
-            Invoke("DeletePrefab", 2.5f);
+            Invoke("DeletePrefab", 4.5f);
             //DeletePrefab();
         }
     }

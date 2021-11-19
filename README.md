@@ -1,4 +1,4 @@
-# Tom's Playdate with stars
+# Tom's Playdate
 
 A mobile game made as the assignment of AMDT's mobile game dev module.
 
