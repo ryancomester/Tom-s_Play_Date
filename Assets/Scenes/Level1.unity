@@ -660,7 +660,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardSpeed: 8
   laneDistance: 2.5
-  jumpForce: 14.74
+  jumpForce: 10
 --- !u!23 &399459797
 MeshRenderer:
   m_ObjectHideFlags: 0

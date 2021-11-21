@@ -23,6 +23,7 @@ public class CharCrontroller : MonoBehaviour
 
     void Start()
     {
+        boom = false;
         controller = GetComponent<CharacterController>();
         Anim = GetComponent<PlayerAnim>();
     }

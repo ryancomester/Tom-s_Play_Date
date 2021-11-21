@@ -10,6 +10,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject TapToStartText;
 
     public static bool isGameStarted;
+    public static int numberOfBusicuts;
 
     //for timmer
     public float timeRemaining = 180;
@@ -25,6 +26,7 @@ public class PlayerManager : MonoBehaviour
         gameOver = false;
         isGameStarted = false;
         timmerIsRunning = true;
+        numberOfBusicuts = 0;
     }
 
     void Update()
@@ -49,6 +51,7 @@ public class PlayerManager : MonoBehaviour
                     CharCrontroller.boom = true;
                     StartCoroutine(GuiText());
                     StartCoroutine(GameOverFunc());
+                    EndScore(numberOfBusicuts);
                 }
                 DisplayTime(timeRemaining);
             }
@@ -57,6 +60,7 @@ public class PlayerManager : MonoBehaviour
         if (gameOver)
         {
             StartCoroutine(GameOverFunc());
+            EndScore(numberOfBusicuts);
         }
 
         if(SwipeManager.tap)
@@ -66,10 +70,13 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    /*waits for 2 seconds to make the Time 0 which stops the game.
+     * it waits for 2 seconds becuse within the 2 seconds the dying animation happens*/
     IEnumerator GameOverFunc()
     {
         yield return new WaitForSeconds(2f);
         Time.timeScale = 0;
+        timmerText.text = "";
         gameOverPanel.SetActive(true);
         yield return null;
     }
@@ -88,5 +95,12 @@ public class PlayerManager : MonoBehaviour
         yield return new WaitForSeconds(.6f);
         timeOutTextBanner.text = "";
         yield return null;
+    }
+
+    /* takes end score when the game is over and sends it to the saveing system. */
+    private void EndScore(int _hsValue)
+    {
+        //sends the score to the save system so it can be saved.
+        EndScoreSys.SaveScore(_hsValue);
     }
 }
