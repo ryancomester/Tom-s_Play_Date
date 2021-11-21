@@ -52,6 +52,7 @@ public class PlayerManager : MonoBehaviour
                     StartCoroutine(GuiText());
                     StartCoroutine(GameOverFunc());
                     EndScore(numberOfBusicuts);
+                    timmerText.text = "";
                 }
                 DisplayTime(timeRemaining);
             }
@@ -59,6 +60,7 @@ public class PlayerManager : MonoBehaviour
 
         if (gameOver)
         {
+            timmerText.text = "";
             StartCoroutine(GameOverFunc());
             EndScore(numberOfBusicuts);
         }
@@ -76,7 +78,6 @@ public class PlayerManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         Time.timeScale = 0;
-        timmerText.text = "";
         gameOverPanel.SetActive(true);
         yield return null;
     }
