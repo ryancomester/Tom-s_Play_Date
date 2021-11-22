@@ -23,13 +23,9 @@ public class UIManager : MonoBehaviour
     }
 
     //UI manager
-    public void ReplayGame()
-    {
-        SceneManager.LoadScene("Level1");
-    }
 
-    public void QuitGame()
+    public void Continue()
     {
-        Application.Quit();
+        SceneManager.LoadScene("GiftPanel");
     }
 }
