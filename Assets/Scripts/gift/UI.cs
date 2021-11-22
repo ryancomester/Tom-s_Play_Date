@@ -13,4 +13,9 @@ public class UI : MonoBehaviour
     {
         SceneManager.LoadScene("Level1");
     }
+
+    public void BackToMenu_btn()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 }

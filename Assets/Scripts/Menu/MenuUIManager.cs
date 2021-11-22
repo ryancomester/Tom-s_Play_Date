@@ -7,6 +7,8 @@ public class MenuUIManager : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
+
         helpMenu.SetActive(false);
     }
 

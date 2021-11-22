@@ -12,6 +12,8 @@ public class Gift : MonoBehaviour
     private int endGameScore;
     void Start()
     {
+        Time.timeScale = 1;
+
         endGameScore = EndScoreSys.LoadScore();
 
         highScoreText.text = $"Your Score is {endGameScore}";
@@ -22,10 +24,14 @@ public class Gift : MonoBehaviour
             textPanel.text = "get your cruncy cream puff on your way out.";
             GetComponent<MeshRenderer>().material.color = Color.yellow;
         }
-        else if (endGameScore <= 50)
+        else if (endGameScore <= 70)
         {
             textPanel.text = "get your cruncy chilly puff on your way out.";
             GetComponent<MeshRenderer>().material.color = Color.red;
+        } else if(endGameScore <= 100)
+        {
+            textPanel.text = "get your cruncy onion puff on your way out.";
+            GetComponent<MeshRenderer>().material.color = Color.HSVToRGB(231, 135, 25);
         }
     }
 
