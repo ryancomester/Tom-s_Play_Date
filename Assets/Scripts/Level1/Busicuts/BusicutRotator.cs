@@ -17,6 +17,9 @@ public class BusicutRotator : MonoBehaviour
         {
             PlayerManager.numberOfBusicuts += 1;
             Destroy(gameObject);
+
+            //plays pop sound
+            SFXManager.SFXInstance.Audio.PlayOneShot(SFXManager.SFXInstance.coinAcquired);
         }
     }
 }
