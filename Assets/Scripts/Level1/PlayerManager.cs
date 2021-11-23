@@ -92,7 +92,7 @@ public class PlayerManager : MonoBehaviour
     //GUI saying time out
     IEnumerator GuiText()
     {
-        timeOutTextBanner.text = "Time OUT";
+        timeOutTextBanner.text = "You Won";
         yield return new WaitForSeconds(.6f);
         timeOutTextBanner.text = "";
         yield return null;

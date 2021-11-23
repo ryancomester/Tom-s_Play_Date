@@ -6,6 +6,13 @@ public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI endScoreText;
+    public GameObject pauseBtn;
+    [SerializeField] private GameObject pausePanel;
+
+    void Start()
+    {
+        pausePanel.SetActive(false);
+    }
 
     void Update()
     {
@@ -13,11 +20,13 @@ public class UIManager : MonoBehaviour
         {
             /* takes the current score and adds it to the GUI text*/
             scoreText.text = $"Score: {PlayerManager.numberOfBusicuts}";
+            pauseBtn.SetActive(true);
         }
 
         if (PlayerManager.gameOver)
         {
             scoreText.text = "";
+            pauseBtn.SetActive(false);
             endScoreText.text = $"Your Score is: {EndScoreSys.LoadScore()}";
         }
     }
@@ -27,5 +36,20 @@ public class UIManager : MonoBehaviour
     public void Continue()
     {
         SceneManager.LoadScene("GiftPanel");
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        pauseBtn.SetActive(false);
+        pausePanel.SetActive(true);
+    }
+
+    public void ContinueGame()
+    {
+        Time.timeScale = 1;
+        pausePanel.SetActive(false);
+        pauseBtn.SetActive(true);
+        //enable the scripts again
     }
 }
