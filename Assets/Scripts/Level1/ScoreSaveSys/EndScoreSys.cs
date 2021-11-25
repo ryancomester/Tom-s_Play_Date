@@ -17,4 +17,40 @@ public class EndScoreSys : MonoBehaviour
         var _hS = PlayerPrefs.GetInt("highScore");
         return _hS;
     }
+
+    public static void SaveBgAudioPreference(bool _bgAudioPreference)
+    {
+        if(_bgAudioPreference)
+            PlayerPrefs.SetInt("BackgroundAudio", 1);
+        else
+            PlayerPrefs.SetInt("BackgroundAudio", 0);
+    }
+
+    //Audio Preferences
+    public static void SaveSFXPreference(bool _SFXPreference)
+    {
+        if (_SFXPreference)
+            PlayerPrefs.SetInt("SFXAudio", 1);
+        else
+            PlayerPrefs.SetInt("SFXAudio", 0);
+
+    }
+
+    public static bool LoadBgAudioPreference()
+    {
+        int _val = PlayerPrefs.GetInt("BackgroundAudio");
+        if (_val == 1)
+            return true;
+        else
+            return false;
+    }
+
+    public static bool LoadSFXPreference()
+    {
+        int _val = PlayerPrefs.GetInt("SFXAudio");
+        if (_val == 1)
+            return true;
+        else
+            return false;
+    }
 }
