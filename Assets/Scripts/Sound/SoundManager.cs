@@ -11,7 +11,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip gameplayMusic;
     [Header("SFXs")]
     public AudioClip busicutGainedMusic;
-    //public AudioClip jumpMusic;
+    public AudioClip jumpMusic;
 
     public static SoundManager soundInstance;
 

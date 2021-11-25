@@ -123,6 +123,7 @@ public class CharCrontroller : MonoBehaviour
     {
         Anim.JumpAmin();
         direction.y = jumpForce;
+        SoundManager.soundInstance.sfxMusicPlayer.PlayOneShot(SoundManager.soundInstance.jumpMusic);
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
