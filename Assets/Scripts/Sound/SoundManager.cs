@@ -1,19 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
-    public Text muteBtnText;
+    [Header("Audio Source")]
+    public AudioSource backgroundMusicPlayer;
+    public AudioSource sfxMusicPlayer;
+    [Header("Music")]
+    public AudioClip gameplayMusic;
+    [Header("SFXs")]
+    public AudioClip busicutGainedMusic;
+    //public AudioClip jumpMusic;
 
     public static SoundManager soundInstance;
-    AudioSource audioSource;
 
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-
+        backgroundMusicPlayer.clip = gameplayMusic;
+        backgroundMusicPlayer.loop = true;
+        backgroundMusicPlayer.Play();
     }
 
     private void Awake()
@@ -23,21 +29,17 @@ public class SoundManager : MonoBehaviour
             Destroy(this.gameObject);
             return;
         }
-
         soundInstance = this;
         DontDestroyOnLoad(this);
     }
 
-    private void Update()
+    public void MuteBgAudio()
     {
-        if (audioSource.mute)
-            muteBtnText.text = "Unmute Audio";
-        else
-            muteBtnText.text = "Mute Audio";
+        backgroundMusicPlayer.mute = !backgroundMusicPlayer.mute;
     }
 
-    public void MuteBGSound()
+    public void MuteSFX()
     {
-        audioSource.mute = !audioSource.mute;
+        sfxMusicPlayer.mute = !sfxMusicPlayer.mute;
     }
- }
+}

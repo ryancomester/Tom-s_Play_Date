@@ -19,7 +19,7 @@ public class BusicutRotator : MonoBehaviour
             Destroy(gameObject);
 
             //plays pop sound
-            SFXManager.SFXInstance.Audio.PlayOneShot(SFXManager.SFXInstance.coinAcquired);
+            SoundManager.soundInstance.sfxMusicPlayer.PlayOneShot(SoundManager.soundInstance.busicutGainedMusic);
         }
     }
 }
