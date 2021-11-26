@@ -62,6 +62,7 @@ public class CharCrontroller : MonoBehaviour
             {
                 desiredLane = 2;
             }
+            SoundManager.soundInstance.sfxMusicPlayer.PlayOneShot(SoundManager.soundInstance.swipeAudio);
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow) || SwipeManager.swipeLeft)
         {
@@ -70,6 +71,7 @@ public class CharCrontroller : MonoBehaviour
             {
                 desiredLane = 0;
             }
+            SoundManager.soundInstance.sfxMusicPlayer.PlayOneShot(SoundManager.soundInstance.swipeAudio);
         }
 
         /* calculating where the player should be after taking the input. */
@@ -116,7 +118,6 @@ public class CharCrontroller : MonoBehaviour
         {
             controller.Move(direction * Time.fixedDeltaTime);
         }
-
     }
 
     private void Jump()
@@ -135,5 +136,4 @@ public class CharCrontroller : MonoBehaviour
             PlayerManager.gameOver = true;
         }
     }
-
 }

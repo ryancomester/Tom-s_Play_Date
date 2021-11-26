@@ -61,6 +61,9 @@ public class PlayerManager : MonoBehaviour
         if (gameOver)
         {
             timmerText.text = "";
+
+            //SoundManager.soundInstance.GameOverMusic();
+
             StartCoroutine(GameOverFunc());
             EndScore(numberOfBusicuts);
         }

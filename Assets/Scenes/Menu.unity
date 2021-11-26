@@ -1010,8 +1010,10 @@ MonoBehaviour:
   backgroundMusicPlayer: {fileID: 1321979615}
   sfxMusicPlayer: {fileID: 1500091518}
   gameplayMusic: {fileID: 8300000, guid: d5d6ca29e591ce1419c61fc893c9e170, type: 3}
+  gameOverMusic: {fileID: 8300000, guid: ac7ed58bccdf38a4aa2477eab11285a5, type: 3}
   busicutGainedMusic: {fileID: 8300000, guid: e11e7b27fa82a00429ea8e310652d650, type: 3}
   jumpMusic: {fileID: 8300000, guid: 381ced2571d76df469645af4d8e3798b, type: 3}
+  swipeAudio: {fileID: 8300000, guid: da6bc42e78c918045aba9ad2bb5afb3a, type: 3}
 --- !u!1 &894481111
 GameObject:
   m_ObjectHideFlags: 0

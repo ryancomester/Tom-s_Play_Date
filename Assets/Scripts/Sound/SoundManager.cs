@@ -7,11 +7,15 @@ public class SoundManager : MonoBehaviour
     [Header("Audio Source")]
     public AudioSource backgroundMusicPlayer;
     public AudioSource sfxMusicPlayer;
+
     [Header("Music")]
     public AudioClip gameplayMusic;
+    public AudioClip gameOverMusic;
+
     [Header("SFXs")]
     public AudioClip busicutGainedMusic;
     public AudioClip jumpMusic;
+    public AudioClip swipeAudio;
 
     public static SoundManager soundInstance;
 
@@ -58,5 +62,12 @@ public class SoundManager : MonoBehaviour
 
         /*takes the current status of the SFX and sends it to save*/
         EndScoreSys.SaveSFXPreference(sfxMusicPlayer.mute);
+    }
+
+    public void GameOverMusic()
+    {
+        backgroundMusicPlayer.Stop();
+        backgroundMusicPlayer.clip = gameOverMusic;
+        backgroundMusicPlayer.Play();
     }
 }
