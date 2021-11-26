@@ -11,6 +11,7 @@ public class CharCrontroller : MonoBehaviour
 
     [Header("Character's running speed")]
     public float forwardSpeed = 10f;
+    public float maxSpeed;
 
     [Header("distance when switching lanes")]
     public float laneDistance = 2.5f;//distance between two lanes
@@ -33,6 +34,12 @@ public class CharCrontroller : MonoBehaviour
         //checking weather the game has started
         if (!PlayerManager.isGameStarted)
             return;
+
+        /*increases speed with time*/
+        if(forwardSpeed < maxSpeed)
+        {
+            forwardSpeed += 0.1f * Time.deltaTime;
+        }
 
         direction.z = forwardSpeed;
 
