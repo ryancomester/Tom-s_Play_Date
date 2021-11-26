@@ -5,27 +5,37 @@ using UnityEngine.SceneManagement;
 public class MenuUIManager : MonoBehaviour
 {
     public GameObject helpMenu;
-    public Text backgroundAudioMuteBtn;
-    public Text sfxAudoBtn;
 
+    [Header("Sprite Images")]
+    public Sprite bgSoundOn;
+    public Sprite bgSoundOff;
+    public Sprite sfxSoundOn;
+    public Sprite sfxSoundOff;
+
+    [Header("Buttons")]
+    public Button bgAudioBtn;
+    public Button sfxAudioBtn;
     private void Start()
     {
         Time.timeScale = 1;
 
         helpMenu.SetActive(false);
+
     }
 
     private void Update()
     {
         if (SoundManager.soundInstance.backgroundMusicPlayer.mute)
-            backgroundAudioMuteBtn.text = "Unmute Audio";
+            bgAudioBtn.image.sprite = bgSoundOff;
         else
-            backgroundAudioMuteBtn.text = "Mute Audio";
-        
+            bgAudioBtn.image.sprite = bgSoundOn;
+
         if (SoundManager.soundInstance.sfxMusicPlayer.mute)
-            sfxAudoBtn.text = "Unmute SFX";
+            sfxAudioBtn.image.sprite = sfxSoundOff;
         else
-            sfxAudoBtn.text = "Mute SFX";
+            sfxAudioBtn.image.sprite = sfxSoundOn;
+
+
     }
 
     //takes user to the level1 where the game is.

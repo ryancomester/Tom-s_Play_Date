@@ -8,12 +8,17 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI endScoreText;
     public GameObject pauseBtn;
-
-    [Header("Audios UI")]
-    public Text backgroundAudioMuteBtn;
-    public Text sfxAudoBtn;
-
     [SerializeField] private GameObject pausePanel;
+
+    [Header("Audios Buttons")]
+    public Button sfxAudioBtn;
+    public Button bgAudioBtn;
+
+    [Header("Sprites")]
+    public Sprite bgSoundOn;
+    public Sprite bgSoundOff;
+    public Sprite sfxSoundOn;
+    public Sprite sfxSoundOff;
 
     void Start()
     {
@@ -36,14 +41,23 @@ public class UIManager : MonoBehaviour
         }
 
         if (SoundManager.soundInstance.backgroundMusicPlayer.mute)
-            backgroundAudioMuteBtn.text = "Unmute Audio";
+        {
+            bgAudioBtn.image.sprite = bgSoundOff;
+        }
         else
-            backgroundAudioMuteBtn.text = "Mute Audio";
+        {
+            bgAudioBtn.image.sprite = bgSoundOn;
+        }
 
         if (SoundManager.soundInstance.sfxMusicPlayer.mute)
-            sfxAudoBtn.text = "Unmute SFX";
+        {
+            sfxAudioBtn.image.sprite = sfxSoundOff;
+
+        }
         else
-            sfxAudoBtn.text = "Mute SFX";
+        {
+            sfxAudioBtn.image.sprite = sfxSoundOn;
+        }
     }
 
     //UI manager
