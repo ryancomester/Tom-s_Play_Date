@@ -20,6 +20,8 @@ public class PlayerManager : MonoBehaviour
     [Header("for the GUI Text")]
     public TextMeshProUGUI timeOutTextBanner;
 
+    private int highscore;
+
     void Start()
     {
         Time.timeScale = 1;
@@ -27,6 +29,7 @@ public class PlayerManager : MonoBehaviour
         isGameStarted = false;
         timmerIsRunning = true;
         numberOfBusicuts = 0;
+        highscore = EndScoreSys.LoadHScore();
     }
 
     void Update()
@@ -52,6 +55,7 @@ public class PlayerManager : MonoBehaviour
                     StartCoroutine(GuiText());
                     StartCoroutine(GameOverFunc());
                     EndScore(numberOfBusicuts);
+                    HighScore(numberOfBusicuts);
                     timmerText.text = "";
                 }
                 DisplayTime(timeRemaining);
@@ -66,6 +70,7 @@ public class PlayerManager : MonoBehaviour
 
             StartCoroutine(GameOverFunc());
             EndScore(numberOfBusicuts);
+            HighScore(numberOfBusicuts);
         }
 
         if(SwipeManager.tap)
@@ -99,6 +104,14 @@ public class PlayerManager : MonoBehaviour
         yield return new WaitForSeconds(.6f);
         timeOutTextBanner.text = "";
         yield return null;
+    }
+
+    private void HighScore(int endScore)
+    {
+        if(endScore > highscore)
+        {
+            EndScoreSys.SaveHScore(endScore);
+        }
     }
 
     /* takes end score when the game is over and sends it to the saveing system. */

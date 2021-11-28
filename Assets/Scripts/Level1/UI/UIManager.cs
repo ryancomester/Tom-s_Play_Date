@@ -20,9 +20,12 @@ public class UIManager : MonoBehaviour
     public Sprite sfxSoundOn;
     public Sprite sfxSoundOff;
 
+    private int highscore;
+
     void Start()
     {
         pausePanel.SetActive(false);
+        highscore = EndScoreSys.LoadHScore();
     }
     void Update()
     {
@@ -57,6 +60,11 @@ public class UIManager : MonoBehaviour
         else
         {
             sfxAudioBtn.image.sprite = sfxSoundOn;
+        }
+
+        if(PlayerManager.numberOfBusicuts > highscore)
+        {
+            scoreText.color = Color.red;
         }
     }
 

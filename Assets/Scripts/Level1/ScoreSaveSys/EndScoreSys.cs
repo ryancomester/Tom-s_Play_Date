@@ -5,16 +5,28 @@ using UnityEngine;
 public class EndScoreSys : MonoBehaviour
 {
     /* takes value and saves it on PlayerPrefs.
-     * the high score which is saved can be retried anytime through LoadScore().*/
-       
-    public static void SaveScore(int highScore)
+     * the high score which is saved can be retried anytime through LoadHighScore().*/
+
+    public static void SaveHScore(int highScore)
     {
-        PlayerPrefs.SetInt("highScore", highScore);
+        PlayerPrefs.SetInt("highscore", highScore);
+    }
+
+    public static int LoadHScore()
+    {
+        var _hS = PlayerPrefs.GetInt("highscore");
+        return _hS;
+    }
+
+    //end Score
+    public static void SaveScore(int endScore)
+    {
+        PlayerPrefs.SetInt("endscore", endScore);
     }
 
     public static int LoadScore()
     {
-        var _hS = PlayerPrefs.GetInt("highScore");
+        var _hS = PlayerPrefs.GetInt("endscore");
         return _hS;
     }
 
